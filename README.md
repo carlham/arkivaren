@@ -1,0 +1,2 @@
+# Arkivaren
+Personal project that allows users to ask questions about political matters and decisions in Norwegian municipalities, providing answers along with links to the original documents and the pages from which the information is sourced. The first source is Elverum Municipality. Additional municipalities and counties can be integrated later via adapters.

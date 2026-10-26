@@ -1,0 +1,50 @@
+# Eksempel på evalueringsspørsmål. Fasit og kilde fylles inn etter å ha lest dokumentene selv.
+# type brukes for å se hvilke spørsmålstyper systemet sliter med.
+
+- id: q001
+  type: fakta
+  question: Hva bestemte komiteen for vekst og utvikling om Storgata nord i juni 2026?
+  expected_sources: [KOVU-protokoll 16.06.2026]
+  expected_answer: I Elverum kommune har komiteen for vekst og utvikling hatt et bredt mandat til å utrede fremtidig trafikkavvikling og omregulering i sentrum.
+
+- id: q002
+  type: nøkkelord
+  question: Hva skjedde med sak 039/26?
+  expected_sources: [https://www.elverum.kommune.no/api/presentation/v2/nye-innsyn/filer/v-585964d3__63d8__44c9__9f12__de294f9152c7-294501_1_P!d-1100153633!h4iFQK?pid=1]
+  expected_answer: <fyll inn>
+
+- id: q003
+  type: vag
+  question: Var det ikke noe med renseanlegget i sommer?
+  expected_sources: [KOVU-protokoll 16.06.2026]
+  expected_answer: <fyll inn>
+
+- id: q004
+  type: flere_dokumenter
+  question: Hvordan har saken om <tema> utviklet seg gjennom 2026?
+  expected_sources: [<dokument 1>, <dokument 2>]
+  expected_answer: <fyll inn>
+
+- id: q005
+  type: finnes_ikke
+  question: Hva har kommunestyret vedtatt om ny flyplass i Elverum?
+  expected_sources: []
+  expected_answer: Systemet skal si at det ikke finner dette.
+
+- id: q006
+  type: mening
+  question: Hva synes Elverum om byutvikling i sentrum?
+  expected_sources: [<dokument>]
+  expected_answer: Skal svare med hva som er vedtatt eller foreslått, ikke en mening.
+
+- id: q007
+  type: fakta
+  question: Hva synes Elverum om bruk av arbeidstøy?
+  expected_sources: [https://www.elverum.kommune.no/api/presentation/v2/nye-innsyn/filer/v-585964d3__63d8__44c9__9f12__de294f9152c7-293634_1_P!d-1100153216!Rlj9E8?pid=1]
+  expected_answer: Klær og utstyr skal være 'riktig' i henhold til arbeidsoppgaven som blir utført. 
+
+- id: q008
+  type: fakta
+  question: Hvilke valg tar Elverum angående kvinners helse i arbeidslivet?
+  expected_sources: [https://www.elverum.kommune.no/api/presentation/v2/nye-innsyn/filer/v-585964d3__63d8__44c9__9f12__de294f9152c7-293913_4_P!d-1100153362!B7OoCv?pid=1]
+  expected_answer: AMU ønsker en orientering av hvordan kommunen arbeider med kvinners helse i arbeidslivet. 
