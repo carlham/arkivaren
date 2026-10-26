@@ -7,9 +7,11 @@ Docker Compose med PostgreSQL (pgvector), FastAPI og n8n. Tom database med migra
 Ferdig når `docker compose up` starter alt og `GET /health` svarer at databasen er tilgjengelig.
 Gjenstår: ingenting innenfor omfanget. `.env` bruker et placeholder-passord lokalt — bytt det ut når vi deployer (milepæl 10).
 
-## 2. Elverum-adapter
+## 2. Elverum-adapter — ✅ ferdig
 Undersøk hvordan Elverums innsynsløsning lister utvalg, møter og dokumenter. Skriv ned funnene i docs/decisions.md før koden skrives. Hent møter for ett utvalg og én periode, lagre PDF-ene lokalt og metadata i databasen.
 Ferdig når en kommando henter kommunestyrets møter for 2026 uten duplikater ved ny kjøring, og testene dekker parsing av svarene.
+Verifisert mot det ekte API-et: kjørt to ganger for Kommunestyret 2026 (`--limit 1`) — første kjøring ga 19 nye dokumenter, andre kjøring ga 0 nye/19 allerede hentet. Se docs/decisions.md for funn og betingelser (rate-limit, sesjon-cookie, osv.).
+Gjenstår: historisk arkiv (2007–2024) og de andre utvalgene er ikke hentet ennå — det var ikke del av "ferdig når" for denne milepælen. Vi venter fortsatt på svar fra kommunen om tillatelse, så `--limit` bør holdes lav til det er bekreftet.
 
 ## 3. Tekstuttrekk og chunking
 Trekk ut tekst per side fra PDF-ene. Del opp i biter med sidetall bevart. Prøv å dele på saksgrenser i protokoller i stedet for fast lengde.

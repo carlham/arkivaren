@@ -8,6 +8,7 @@ sys.path.insert(0, os.getcwd())
 
 from app.config import settings
 from app.db import Base
+from app import models  # noqa: F401 - registrerer modeller på Base.metadata
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url)
