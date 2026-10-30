@@ -6,7 +6,6 @@ class Settings(BaseSettings):
 
     database_url: str
     http_user_agent: str
-    min_request_interval_seconds: float = 10.0
 
 
 settings = Settings()

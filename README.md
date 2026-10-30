@@ -1,2 +1,2 @@
-# Arkivaren
-Personal project that allows users to ask questions about political matters and decisions in Norwegian municipalities, providing answers along with links to the original documents and the pages from which the information is sourced. The first source is Elverum Municipality. Additional municipalities and counties can be integrated later via adapters.
+# Jobbradar
+En jobbsøkerassistent bygget på NAVs åpne stillingsfeed. Systemet henter nye stillingsannonser hver dag, bruker AI til å trekke ut strukturert informasjon fra annonsetekstene (kategori, ferdigheter, krav til erfaring, om stillingen passer for nyutdannede), og matcher annonsene mot profilen min (CV, ferdigheter, prosjekter). Man skal kunne filtrere på type jobb, se hvorfor en stilling passer eller ikke, se statistikk over hva markedet etterspør, og spørre en assistent som «hva slags jobber passer meg?». Mer kommer.

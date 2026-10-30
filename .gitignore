@@ -2,4 +2,6 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-api/data/
+profile/*
+!profile/README.md
+!profile/example/
