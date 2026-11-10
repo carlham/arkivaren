@@ -5,3 +5,4 @@ __pycache__/
 profile/*
 !profile/README.md
 !profile/example/
+settings.local.json
