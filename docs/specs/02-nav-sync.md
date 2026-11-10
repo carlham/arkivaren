@@ -28,7 +28,7 @@ Hente stillingsannonser fra NAVs pam-stilling-feed side for side, huske hvor vi 
 
 ## Oppgaver
 - [x] 1. Lagre noen ekte svar fra feeden som fixtures (liste og enkeltannonse), uten kontaktinfo der vi kan.
-- [ ] 2. Legg `NAV_FEED_BASE_URL` og `NAV_FEED_TOKEN` i `Settings`.
+- [x] 2. Legg `NAV_FEED_BASE_URL` og `NAV_FEED_TOKEN` i `Settings`.
 - [ ] 3. Modeller `job_ad`, `employer` og `sync_state` + migrasjon `0002`.
 - [ ] 4. NAV-klient i `api/app/nav/client.py` som leser en side av gangen.
 - [ ] 5. Mapping fra feed-oppføring til `job_ad` som dropper kontaktfelt.

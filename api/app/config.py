@@ -6,6 +6,8 @@ class Settings(BaseSettings):
 
     database_url: str
     http_user_agent: str
+    nav_feed_base_url: str
+    nav_feed_token: str
 
 
 settings = Settings()
