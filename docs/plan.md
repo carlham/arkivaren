@@ -5,7 +5,7 @@
 ## 1. Skjelett ✅
 Docker Compose med PostgreSQL (pgvector), FastAPI og n8n. Ferdig fra forrige prosjekt, men prosjektnavn og eventuelle kommunerester skal ryddes bort.
 
-## 2. Synkronisering mot NAV
+## 2. Synkronisering mot NAV ✅
 Klient mot pam-stilling-feed som leser feeden side for side og husker hvor den slapp. Lagre annonsene uten kontaktinfo. Nye annonser legges til, endrede oppdateres og inaktive markeres slik at de forsvinner fra alle resultater med en gang. Token leses fra .env, slik at den offentlige tokenen kan byttes med en fast senere.
 Ferdig når en første synk og en ny synk etterpå fungerer, ingen annonser dupliseres, inaktive annonser er skjult, og ingen kontaktpersoner ligger i databasen.
 

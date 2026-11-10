@@ -1,0 +1,78 @@
+{
+ "uuid": "e3187905-124a-46c8-ac20-3d94d746f363",
+ "ad_content": {
+  "uuid": "e3187905-124a-46c8-ac20-3d94d746f363",
+  "published": "2026-05-06T00:00:01+02:00",
+  "expires": "2026-12-22T23:59:59+01:00",
+  "updated": "2026-11-10T08:35:04.811342+01:00",
+  "workLocations": [
+   {
+    "country": "NORGE",
+    "address": "",
+    "city": "SANDNES",
+    "postalCode": "4313",
+    "county": "ROGALAND",
+    "municipal": "SANDNES"
+   }
+  ],
+  "contactList": [
+   {
+    "name": "Kari Testperson",
+    "email": "kari.testperson@example.com",
+    "phone": "99 88 77 66",
+    "role": "Rekrutterer",
+    "title": "HR"
+   }
+  ],
+  "title": "We are seeking a Senior Project Engineer - Cyber Security!",
+  "description": "<p><strong>On behalf of ABB, we are seeking a Senior Project Engineer - Cyber Security for a position in Forus!</strong></p><p> </p><p>Take your next career step at ABB!</p><p><br />Join a global team energizing the transformation of industry and society for a more productive, sustainable future. We are looking for a Senior Project Engineer to strengthen our Cyber, IT, and Automation team in Stavanger. In this role, you’ll work with advanced automation systems, focusing on cyber security and operational technology (OT) for both Norwegian and international customers.</p><p> </p><p><strong>Your Responsibilities</strong></p><ul><li>Execute projects involving cyber security, OT networks, and automation systems for process industries.</li><li>Design, implement, document, and test solutions for traditional and virtual control systems.</li><li>Integrate and secure virtual control systems and large-scale networks.</li><li>Stay updated on new technologies (e.g., firewalls, switches, servers, network monitoring, threat detection, resilience to cyber-attacks).</li><li>Ensure delivery is compliant with relevant standards (e.g., IEC 62443) and customer requirements.</li><li>Collaborate with multidisciplinary teams and share your expertise.</li><li>Support project planning, execution, and commissioning—both on-site and remotely.</li></ul><p><strong>Your Background</strong></p><ul><li>Bachelor&#39;s or master&#39;s degree in networking, cyber security, automation, or similar.</li><li>Proven hands-on experience with design, configuration, testing and installation in OT networks, IT, or cyber security in industrial environments.</li><li>Experience with implementation of IEC 62443 standard.</li><li>Ability to lead small technical teams and drive project delivery.</li><li>Understanding of project economics and planning.</li><li>Committed to quality and continuous improvement.</li><li>Excellent communication skills in English (Norwegian is an advantage).</li></ul><p><strong>What We Offer</strong></p><ul><li>Challenging and varied tasks in a strong professional environment.</li><li>Great colleagues and a supportive work culture.</li><li>Flexible working conditions with influence over your tasks and responsibilities.</li><li>Opportunities for offshore work and international assignments.</li><li>Excellent opportunities for learning and personal development.</li></ul><p><strong>Please upload diploma and transcripts with your application.</strong></p><p><br /><strong>Folk can offer:</strong></p><ul><li>Good long-term opportunities with our clients</li><li>Individual and adapted follow-up while on assignment</li><li>Good career development opportunities in an interesting and innovative sector</li><li>Competitive terms and conditions</li><li>Social events and pleasant tokens of appreciation throughout the year</li></ul><p><br /><i>We see possibilities in your competence!</i><br />In Folk, we work in accordance with our values: ethical, personal, enthusiastic and flexible.</p><p>Kontakt Kari Testperson, kari.testperson@example.com eller 99 88 77 66.</p>",
+  "sourceurl": "",
+  "source": "IMPORTAPI",
+  "applicationUrl": "https://apply.recman.page/job_post.php?id=476166&path=nav&sub_id=87",
+  "applicationDue": "We are evaluating candidates continuously!",
+  "occupationCategories": [
+   {
+    "level1": "IT",
+    "level2": "Utvikling"
+   }
+  ],
+  "categoryList": [
+   {
+    "categoryType": "ESCO",
+    "code": "http://data.europa.eu/esco/occupation/0ce5a9f4-e00a-4bbe-b255-3c63407167a4",
+    "name": "IKT-sikkerhetsingeniør",
+    "description": "",
+    "score": 1.0
+   },
+   {
+    "categoryType": "JANZZ",
+    "code": "130188",
+    "name": "IKT-sikkerhetsingeniør",
+    "description": "",
+    "score": 1.0
+   },
+   {
+    "categoryType": "STYRK08",
+    "code": "2529",
+    "name": "Sikkerhetsanalytikere mv.",
+    "description": "",
+    "score": 1.0
+   }
+  ],
+  "jobtitle": "3699 - Senior Project Engineer - Cyber Security",
+  "link": "https://arbeidsplassen.nav.no/stillinger/stilling/e3187905-124a-46c8-ac20-3d94d746f363",
+  "employer": {
+   "name": "ABB AS",
+   "orgnr": "973635611",
+   "description": "<p>Since the establishment in 2004, Folk AS has assisted Norwegian and international companies by selecting and recruiting skilled people within technical and administrative disciplines – for project-based, temporary and permanent positions <br />This is what we are good at – here lies our expertise.<br />Our values are: ethical, personal, committed and flexible.</p>",
+   "homepage": "http://www.folkAS.com"
+  },
+  "engagementtype": "Prosjekt",
+  "extent": "Heltid",
+  "starttime": "",
+  "positioncount": "1",
+  "sector": "Privat"
+ },
+ "sistEndret": "2026-11-10T08:35:04.811+01:00",
+ "status": "ACTIVE"
+}

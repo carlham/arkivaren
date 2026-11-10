@@ -43,6 +43,7 @@ n8n/              # eksporterte n8n-flyter
 profile/          # min CV og profil, ligger IKKE i git (se profile/README.md)
 docs/
   plan.md         # milepæler
+  specs/          # én spesifikasjon per milepæl
   decisions.md    # beslutningslogg
 ```
 
@@ -64,7 +65,12 @@ Bruk de engelske navnene i koden.
 ## Regler for Claude
 
 - Jobb med én milepæl om gangen fra docs/plan.md. Legg frem en plan og vent på godkjenning før større endringer.
+- Arbeidsflyten er /spec, /build, /verify, /review og /ship. Spesifikasjonen i docs/specs/ er fasiten gjennom hele milepælen.
+- Bare et tydelig «go», «godkjent», «kjør» eller «lgtm» er godkjenning. Et spørsmål eller en kommentar er det ikke.
+- Ingenting merges til main eller pushes uten at jeg sier ja.
+- Hvis jeg må rette deg på det samme mer enn én gang, foreslå en ny regel her i CLAUDE.md.
 - Hold endringene små. Ikke lag abstraksjoner før det samme mønsteret trengs to steder.
+- Én commit per oppgave i spesifikasjonen: kode, tester og avhaking i spesifikasjonen i samme commit. Rettelser etter /verify eller /review får egne commits, én per funn, med funnets nummer i meldingen.
 - Skriv tester for ny logikk med pytest, og kjør dem før du sier at noe er ferdig. Tester skal ikke kalle NAV eller Claude API, bruk lagrede eksempelsvar.
 - Spør før du legger til nye avhengigheter.
 - Hemmeligheter ligger i .env og skal aldri committes. Oppdater .env.example når nye variabler kommer til.
