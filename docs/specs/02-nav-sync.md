@@ -12,13 +12,13 @@ Hente stillingsannonser fra NAVs pam-stilling-feed side for side, huske hvor vi 
 - [ ] Ny synk rett etterpå gir ingen duplikater (test: samme fixture synkes to ganger, antall rader er uendret).
 - [ ] Endret annonse oppdateres (test: fixture med endret tittel/tekst gir oppdatert rad).
 - [ ] Inaktiv annonse er skjult fra alle resultater (test: spørringen som brukes til lesing returnerer ikke inaktive).
-- [ ] Ingen kontaktpersoner eller kontaktinfo i databasen (test: lagret rad fra fixture med kontaktfelt inneholder ingen av verdiene; manuell sjekk: grep i `pg_dump`).
-- [ ] E-post og telefonnummer i annonseteksten er erstattet med `[fjernet]` (test: fixture med begge deler i teksten, lagret tekst inneholder ingen av dem).
-- [ ] Søknadsfrist tolkes riktig (test: «2026-12-01T23:59:59+01:00» og «01.12.2026» gir dato, «Snarest» gir tom dato, og originalteksten lagres alltid).
+- [x] Ingen kontaktpersoner eller kontaktinfo i databasen (test: lagret rad fra fixture med kontaktfelt inneholder ingen av verdiene; manuell sjekk: grep i `pg_dump`).
+- [x] E-post og telefonnummer i annonseteksten er erstattet med `[fjernet]` (test: fixture med begge deler i teksten, lagret tekst inneholder ingen av dem).
+- [x] Søknadsfrist tolkes riktig (test: «2026-12-01T23:59:59+01:00» og «01.12.2026» gir dato, «Snarest» gir tom dato, og originalteksten lagres alltid).
 - [ ] Synken fortsetter fra sist lagrede posisjon (test: avbrutt synk starter på riktig side neste gang).
-- [ ] Token og base-URL leses fra `.env` via `Settings` (test: klienten sender token fra settings).
-- [ ] Ingen tester kaller NAV (alle bruker lagrede eksempelsvar i `api/tests/fixtures/`).
-- [ ] Logg per kjøring: antall sider, nye, endrede og inaktive annonser.
+- [x] Token og base-URL leses fra `.env` via `Settings` (test: klienten sender token fra settings).
+- [x] Ingen tester kaller NAV (alle bruker lagrede eksempelsvar i `api/tests/fixtures/`).
+- [x] Logg per kjøring: antall sider, nye, endrede og inaktive annonser.
 
 ## Utenfor scope
 - Forfilter og AI-uttrekk (M3 og M4).
