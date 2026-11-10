@@ -30,6 +30,7 @@ def make_client(requests: list) -> NavClient:
         token="test-token",
         user_agent="test-agent",
         pause_seconds=0,
+        retry_pause_seconds=0,
         transport=httpx.MockTransport(handler),
     )
 
@@ -67,3 +68,62 @@ def test_client_sends_if_modified_since_only_when_asked():
 def test_client_raises_on_error_response():
     with pytest.raises(httpx.HTTPStatusError):
         make_client([]).get_ad("/api/v1/does-not-exist")
+
+
+def client_answering(answers: list, calls: list) -> NavClient:
+    """A client that gives the answers in order. An answer is a status code or an exception."""
+    remaining = iter(answers)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        calls.append(request)
+        answer = next(remaining)
+        if isinstance(answer, Exception):
+            raise answer
+        return httpx.Response(answer, json={"ok": True})
+
+    return NavClient(
+        "https://feed.example.com", "t", "a", pause_seconds=0, retry_pause_seconds=0,
+        transport=httpx.MockTransport(handler),
+    )
+
+
+def test_client_tries_again_after_server_errors_and_too_many_requests():
+    calls = []
+
+    result = client_answering([503, 429, 200], calls).get_ad("/ad")
+
+    assert result == {"ok": True}
+    assert len(calls) == 3
+
+
+def test_client_tries_again_after_a_network_error():
+    calls = []
+
+    result = client_answering([httpx.ConnectError("no connection"), 200], calls).get_ad("/ad")
+
+    assert result == {"ok": True}
+    assert len(calls) == 2
+
+
+def test_client_gives_up_after_four_attempts():
+    calls = []
+
+    with pytest.raises(httpx.HTTPStatusError):
+        client_answering([503, 503, 503, 503, 200], calls).get_ad("/ad")
+
+    assert len(calls) == 4
+
+
+def test_client_does_not_try_again_when_the_ad_is_not_found():
+    calls = []
+
+    with pytest.raises(httpx.HTTPStatusError):
+        client_answering([404, 200], calls).get_ad("/ad")
+
+    assert len(calls) == 1
+
+
+def test_get_page_returns_none_when_nothing_has_changed():
+    since = datetime(2026, 11, 3, tzinfo=timezone.utc)
+
+    assert client_answering([304], []).get_page(since=since) is None

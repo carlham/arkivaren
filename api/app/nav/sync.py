@@ -3,6 +3,7 @@ import logging
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 
+import httpx
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -33,6 +34,9 @@ def sync(db: Session, client: NavClient, since: datetime, max_pages: int | None 
         page = client.get_page(state.last_page_url)
     else:
         page = client.get_page(FIRST_PAGE, since=since)
+    if page is None:
+        logger.info("NAV sync done: nothing has changed since %s", since)
+        return stats
 
     while True:
         stats["pages"] += 1
@@ -69,9 +73,16 @@ def sync_page(db: Session, client: NavClient, page: dict, stats: Counter) -> Non
         elif ad is not None and ad.status == "active" and ad.source_modified_at == modified:
             stats["unchanged"] += 1
         else:
-            detail = client.get_ad(item["url"])
+            try:
+                detail = client.get_ad(item["url"])
+            except httpx.HTTPStatusError as error:
+                # Other errors stop the sync. Skipping the ad would lose it, since we only
+                # remember the last page we read. Gone from NAV (404) is the same as inactive.
+                if error.response.status_code != 404:
+                    raise
+                detail = {}
             if "ad_content" not in detail:
-                # The ad turned inactive between the list and the details.
+                # The ad turned inactive or was removed between the list and the details.
                 if ad is not None and ad.status == "active":
                     mark_inactive(ad, modified)
                     stats["inactive"] += 1
