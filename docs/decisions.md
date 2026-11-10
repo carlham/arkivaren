@@ -4,6 +4,16 @@ Nyeste øverst. Hver oppføring sier hva som ble bestemt og hvorfor.
 
 ---
 
+### Synken startes fra kommandolinjen (2026-11-10)
+
+`docker compose exec api python -m app.nav.sync` starter synken, med `--since-days` (hvor langt tilbake første synk går, som standard 7) og `--max-pages` (for utvikling). Logikken ligger i `sync()` i `nav/sync.py`, som tar en database-sesjon og en klient, slik at et endepunkt kan kalle samme funksjon i milepæl 10.
+
+Tokenen leses fra `NAV_FEED_TOKEN` i `.env`. Den offentlige tokenen hentes fra `/api/publicToken` (svaret har en tekstlinje foran selve tokenen), roterer uregelmessig og limes inn for hånd. Klienten henter den ikke selv, slik at den kan byttes med en fast token senere uten kodeendring.
+
+**Hvorfor** Minst mulig kode nå. Et endepunkt trengs først når n8n skal starte synken, og da kan det kalle den samme funksjonen.
+
+---
+
 ### Hvordan synken leser feeden (2026-11-10)
 
 Første synk starter 7 dager bak i tid (`--since-days`), siden NAV har rundt 600 nye annonser per dag. Etter det starter hver synk på siste side vi leste. Posisjonen er `feed_url` til den siden, ikke `next_url`, fordi siste side har `next_url = null`. Å lese siste side på nytt er ufarlig.

@@ -1,6 +1,6 @@
 # M2 Synkronisering mot NAV
 
-Status: pågår
+Status: ferdig
 Branch: m02-nav-sync
 
 ## Mål
