@@ -66,7 +66,7 @@ Bruk de engelske navnene i koden.
 
 - Jobb med én milepæl om gangen fra docs/plan.md. Legg frem en plan og vent på godkjenning før større endringer.
 - Arbeidsflyten er /spec, /build, /verify, /review og /ship. Spesifikasjonen i docs/specs/ er fasiten gjennom hele milepælen.
-- Bare et tydelig «go», «godkjent» eller «kjør» er godkjenning. Et spørsmål eller en kommentar er det ikke.
+- Bare et tydelig «go», «godkjent», «kjør» eller «lgtm» er godkjenning. Et spørsmål eller en kommentar er det ikke.
 - Ingenting merges til main eller pushes uten at jeg sier ja.
 - Hvis jeg må rette deg på det samme mer enn én gang, foreslå en ny regel her i CLAUDE.md.
 - Hold endringene små. Ikke lag abstraksjoner før det samme mønsteret trengs to steder.

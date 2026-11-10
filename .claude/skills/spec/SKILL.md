@@ -20,7 +20,7 @@ Goal: produce `docs/specs/NN-short-name.md` for milestone $ARGUMENTS and get the
 
 ## Gate
 
-Only an explicit go ("go", "godkjent", "kjør") approves the spec. A question, a comment or "ok, does this cover X?" is not approval. Answer it and ask again.
+Only an explicit go ("go", "godkjent", "kjør", "lgtm") approves the spec. A question, a comment or "ok, does this cover X?" is not approval. Answer it and ask again.
 
 When approved, set status to `godkjent`, create the branch `mNN-short-name` from main, and tell the user to run /build.
 
