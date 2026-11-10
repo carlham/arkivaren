@@ -17,14 +17,15 @@ def make_job_ad(uuid: str, **fields) -> JobAd:
 
 
 def test_job_ad_keeps_employer_and_occupation_categories(db):
-    employer = Employer(orgnr="973635611", name="ABB AS")
+    # An orgnr that cannot exist in the real data, which may be in the dev database.
+    employer = Employer(orgnr="000000000", name="Test AS")
     categories = [{"level1": "IT", "level2": "Utvikling"}]
     db.add(make_job_ad("a", employer=employer, occupation_categories=categories))
     db.flush()
 
     saved = db.query(JobAd).filter_by(uuid="a").one()
 
-    assert saved.employer.name == "ABB AS"
+    assert saved.employer.name == "Test AS"
     assert saved.occupation_categories == categories
 
 
