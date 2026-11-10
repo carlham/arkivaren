@@ -32,7 +32,7 @@ Hente stillingsannonser fra NAVs pam-stilling-feed side for side, huske hvor vi 
 - [x] 3. Modeller `job_ad`, `employer` og `sync_state` + migrasjon `0002`.
 - [x] 4. NAV-klient i `api/app/nav/client.py` som leser en side av gangen.
 - [x] 5. Mapping fra feed-oppføring til `job_ad` som dropper kontaktfelt.
-- [ ] 6. Synk-logikk: ny, endret, inaktiv, og lagring av posisjon.
+- [x] 6. Synk-logikk: ny, endret, inaktiv, og lagring av posisjon.
 - [ ] 7. CLI-inngang i `nav/sync.py` (`python -m app.nav.sync`).
 - [ ] 8. Oppdater decisions.md.
 

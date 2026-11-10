@@ -62,6 +62,5 @@ def map_ad(detail: dict) -> dict:
         "application_deadline": parse_deadline(deadline_text),
         "occupation_categories": ad.get("occupationCategories"),
         "published_at": datetime.fromisoformat(ad["published"]) if ad.get("published") else None,
-        "source_modified_at": datetime.fromisoformat(detail["sistEndret"]),
         "employer": {"orgnr": employer["orgnr"], "name": employer["name"]} if employer.get("orgnr") else None,
     }

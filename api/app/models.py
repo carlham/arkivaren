@@ -1,6 +1,6 @@
 from datetime import date, datetime
 
-from sqlalchemy import JSON, Date, DateTime, ForeignKey, String, Text, func
+from sqlalchemy import JSON, Date, DateTime, ForeignKey, Select, String, Text, func, select
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -38,12 +38,18 @@ class JobAd(Base):
     # NAV's occupationCategories as delivered, for the pre-filter in milestone 3.
     occupation_categories: Mapped[list | None] = mapped_column(JSON().with_variant(JSONB, "postgresql"))
     published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
-    # sistEndret from the feed. Compared on each sync to see if the ad has changed.
+    # sistEndret of the feed list entry (it differs from the one in the details). Compared on
+    # each sync to see if the ad has changed.
     source_modified_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
+
+
+def active_job_ads() -> Select:
+    """The only way to read job ads for results. Inactive ads must never show up."""
+    return select(JobAd).where(JobAd.status == "active")
 
 
 class SyncState(Base):

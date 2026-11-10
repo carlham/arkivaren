@@ -25,7 +25,6 @@ def test_map_ad_picks_the_columns_we_store():
     assert fields["employer"] == {"orgnr": "973635611", "name": "ABB AS"}
     assert fields["occupation_categories"] == [{"level1": "IT", "level2": "Utvikling"}]
     assert fields["application_url"].startswith("https://")
-    assert fields["source_modified_at"].isoformat() == "2026-11-10T08:35:04.811000+01:00"
 
 
 def test_map_ad_stores_no_contact_information():
