@@ -3,7 +3,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
-from sqlalchemy import func, select
+import pytest
+from sqlalchemy import delete, func, select
 
 from app.models import Employer, JobAd, SyncState, active_job_ads
 from app.nav.client import NavClient
@@ -20,6 +21,17 @@ INACTIVE_AD = "6b0c5b4f-301d-4852-b515-93b385230bf9"
 
 PAGE_1 = "/api/v1/feed/e67e3b0c-6d45-4186-8409-0e5eec45ad9c"
 PAGE_2 = "/api/v1/feed/bdee2dc9-8871-4d69-867e-f9cdfbabd93c"
+
+
+@pytest.fixture(autouse=True)
+def start_without_saved_position_or_fixture_ads(db):
+    """The dev database may hold a real sync. Hide it from each test.
+
+    The delete happens inside the test's transaction, so it is rolled back afterwards.
+    """
+    db.execute(delete(SyncState))
+    db.execute(delete(JobAd).where(JobAd.uuid.in_([NEW_AD, CHANGED_AD, UNCHANGED_AD, INACTIVE_AD])))
+    db.flush()
 
 
 def load_fixture(name: str) -> dict:
