@@ -33,8 +33,8 @@ Hente stillingsannonser fra NAVs pam-stilling-feed side for side, huske hvor vi 
 - [x] 4. NAV-klient i `api/app/nav/client.py` som leser en side av gangen.
 - [x] 5. Mapping fra feed-oppføring til `job_ad` som dropper kontaktfelt.
 - [x] 6. Synk-logikk: ny, endret, inaktiv, og lagring av posisjon.
-- [ ] 7. CLI-inngang i `nav/sync.py` (`python -m app.nav.sync`).
-- [ ] 8. Oppdater decisions.md.
+- [x] 7. CLI-inngang i `nav/sync.py` (`python -m app.nav.sync`).
+- [x] 8. Oppdater decisions.md.
 
 ## Beslutninger
 - Vi lagrer utvalgte kolonner per annonse (uuid, tittel, renset tekst, arbeidsgiver, sted, omfang, sektor, `application_deadline`, søknadslenke, status, tidsstempler), ikke rå JSON. Kontaktfelt droppes. Kan justeres senere hvis andre data trengs. Hvorfor: rå JSON ville tatt med kontaktinfo, og kolonner er enklere å forklare.
