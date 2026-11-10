@@ -14,6 +14,7 @@ Hente stillingsannonser fra NAVs pam-stilling-feed side for side, huske hvor vi 
 - [ ] Inaktiv annonse er skjult fra alle resultater (test: spørringen som brukes til lesing returnerer ikke inaktive).
 - [ ] Ingen kontaktpersoner eller kontaktinfo i databasen (test: lagret rad fra fixture med kontaktfelt inneholder ingen av verdiene; manuell sjekk: grep i `pg_dump`).
 - [ ] E-post og telefonnummer i annonseteksten er erstattet med `[fjernet]` (test: fixture med begge deler i teksten, lagret tekst inneholder ingen av dem).
+- [ ] Søknadsfrist tolkes riktig (test: «2026-12-01T23:59:59+01:00» og «01.12.2026» gir dato, «Snarest» gir tom dato, og originalteksten lagres alltid).
 - [ ] Synken fortsetter fra sist lagrede posisjon (test: avbrutt synk starter på riktig side neste gang).
 - [ ] Token og base-URL leses fra `.env` via `Settings` (test: klienten sender token fra settings).
 - [ ] Ingen tester kaller NAV (alle bruker lagrede eksempelsvar i `api/tests/fixtures/`).
@@ -49,16 +50,18 @@ Hente stillingsannonser fra NAVs pam-stilling-feed side for side, huske hvor vi 
 - Alle yrker hentes i M2. Filtrering til IT skjer i M3, før AI-uttrekk.
 - Token-endepunktet `/api/publicToken` returnerer en tekstlinje foran selve tokenen. Tokenen limes inn i `.env` for hånd, klienten henter den ikke selv.
 
-- Feedformat (fra NAVs dokumentasjon, må bekreftes mot ekte svar i oppgave 1):
-  - Auth: `Authorization: Bearer <token>`. Den offentlige tokenen hentes fra `/api/publicToken` og roterer uregelmessig, så den limes inn i `.env` for hånd.
-  - `GET /api/v1/feed` gir en side med `items` og `next_url`. Hver oppføring har `_feed_entry` med `uuid`, `status` (`ACTIVE`/`INACTIVE`) og `sistEndret`. Detaljene hentes fra `url` i oppføringen.
+- Feedformat (bekreftet mot ekte svar 2026-11-10, se fixtures i `api/tests/fixtures/nav/`):
+  - Auth: `Authorization: Bearer <token>`. Den offentlige tokenen hentes fra `/api/publicToken` (svaret har en tekstlinje foran tokenen) og roterer uregelmessig, så den limes inn i `.env` for hånd.
+  - `GET /api/v1/feed` gir en side med opptil 1000 `items` og `next_url`. Hver oppføring har `_feed_entry` med `uuid`, `status` (`ACTIVE`/`INACTIVE`) og `sistEndret`. Detaljene hentes fra `url` i oppføringen (relativ, `/api/v1/feedentry/{uuid}`).
+  - Detaljsvaret har `uuid`, `status`, `sistEndret` og `ad_content` (ikke `json`). For inaktive annonser mangler `ad_content`.
   - Hver endring gir en ny oppføring i feeden, så samme `uuid` kan dukke opp flere ganger. Siste oppføring gjelder.
   - Slutt på feeden: `next_url` er `null`. Posisjonen vi husker er siste `next_url` / `next_id`.
-  - Kontaktfelt: `json.contactList[]` (navn, e-post, telefon, rolle, tittel). Droppes.
-  - Stoppede annonser kan ha tittel, arbeidsgiver og kontaktinfo maskert. Vi leser ikke detaljer for inaktive annonser.
+  - Kontaktfelt: `ad_content.contactList[]` (navn, e-post, telefon, rolle, tittel). Droppes. `employer.description` lagres heller ikke.
+  - `applicationDue` er fritekst, ikke alltid en dato (for eksempel «We are evaluating candidates continuously!»).
+- Søknadsfrist lagres i to kolonner: `application_deadline_text` med originalteksten og `application_deadline` som dato. Datoen fylles bare ut når teksten er en dato (ISO eller dd.mm.åååå), ellers er den tom. Hvorfor: teksten som ikke er en dato går ikke tapt, og M5 kan filtrere på datoen.
 
 ## Åpne spørsmål
 -
 
 ## Logg
--
+- 2026-11-10: Etter oppgave 1 ble feedformatet bekreftet mot ekte svar. Rettet `json` til `ad_content`, la til sidestørrelse 1000, og la til `application_deadline_text` ved siden av `application_deadline` fordi `applicationDue` er fritekst. Nytt ferdig-når-punkt for tolking av søknadsfrist. Godkjent av deg med «go».
