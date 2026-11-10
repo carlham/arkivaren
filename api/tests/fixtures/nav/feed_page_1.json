@@ -1,0 +1,72 @@
+{
+ "version": "1.0",
+ "title": "Stillingsfeeden fra arbeidsplassen.no",
+ "home_page_url": "https://arbeidsplassen.nav.no",
+ "feed_url": "/api/v1/feed/e67e3b0c-6d45-4186-8409-0e5eec45ad9c",
+ "description": "Feed med stillinger fra arbeidsplassen.no - En av Norges største oversikter over utlyste stillinger",
+ "next_url": "/api/v1/feed/bdee2dc9-8871-4d69-867e-f9cdfbabd93c",
+ "id": "e67e3b0c-6d45-4186-8409-0e5eec45ad9c",
+ "next_id": "bdee2dc9-8871-4d69-867e-f9cdfbabd93c",
+ "items": [
+  {
+   "id": "e3187905-124a-46c8-ac20-3d94d746f363",
+   "url": "/api/v1/feedentry/e3187905-124a-46c8-ac20-3d94d746f363",
+   "title": "We are seeking a Senior Project Engineer - Cyber Security!",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-11-10T08:35:12.810236+01:00",
+   "_feed_entry": {
+    "uuid": "e3187905-124a-46c8-ac20-3d94d746f363",
+    "status": "ACTIVE",
+    "title": "We are seeking a Senior Project Engineer - Cyber Security!",
+    "businessName": "ABB AS",
+    "municipal": "SANDNES",
+    "sistEndret": "2026-11-10T08:35:12.810236+01:00"
+   }
+  },
+  {
+   "id": "d3183152-db7c-47dd-b199-cec4915c62da",
+   "url": "/api/v1/feedentry/d3183152-db7c-47dd-b199-cec4915c62da",
+   "title": "Senterkoordinator (rådgiver) ved Centre for Biogeochemistry in the Anthropocene (CBA)",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-11-10T10:30:13.989601+01:00",
+   "_feed_entry": {
+    "uuid": "d3183152-db7c-47dd-b199-cec4915c62da",
+    "status": "ACTIVE",
+    "title": "Senterkoordinator (rådgiver) ved Centre for Biogeochemistry in the Anthropocene (CBA)",
+    "businessName": "Universitetet i Oslo",
+    "municipal": "OSLO",
+    "sistEndret": "2026-11-10T10:30:13.989601+01:00"
+   }
+  },
+  {
+   "id": "27cb7370-5d61-4dcf-a456-49df94fc49a4",
+   "url": "/api/v1/feedentry/27cb7370-5d61-4dcf-a456-49df94fc49a4",
+   "title": "Saksbehandlere i Klareringsdirektoratet",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-11-10T08:36:13.287245+01:00",
+   "_feed_entry": {
+    "uuid": "27cb7370-5d61-4dcf-a456-49df94fc49a4",
+    "status": "ACTIVE",
+    "title": "Saksbehandlere i Klareringsdirektoratet",
+    "businessName": "Sivil klareringsmyndighet",
+    "municipal": "MOSS",
+    "sistEndret": "2026-11-10T08:36:13.287245+01:00"
+   }
+  },
+  {
+   "id": "6b0c5b4f-301d-4852-b515-93b385230bf9",
+   "url": "/api/v1/feedentry/6b0c5b4f-301d-4852-b515-93b385230bf9",
+   "title": "...",
+   "content_text": "Stillingsannonse",
+   "date_modified": "2026-11-10T08:36:43.261954+01:00",
+   "_feed_entry": {
+    "uuid": "6b0c5b4f-301d-4852-b515-93b385230bf9",
+    "status": "INACTIVE",
+    "title": "...",
+    "businessName": "",
+    "municipal": "NORDRE FOLLO",
+    "sistEndret": "2026-11-10T08:36:43.261954+01:00"
+   }
+  }
+ ]
+}

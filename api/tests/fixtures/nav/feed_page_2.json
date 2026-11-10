@@ -1,0 +1,11 @@
+{
+ "version": "1.0",
+ "title": "Stillingsfeeden fra arbeidsplassen.no",
+ "home_page_url": "https://arbeidsplassen.nav.no",
+ "feed_url": "/api/v1/feed/e67e3b0c-6d45-4186-8409-0e5eec45ad9c",
+ "description": "Feed med stillinger fra arbeidsplassen.no - En av Norges største oversikter over utlyste stillinger",
+ "next_url": null,
+ "id": "e67e3b0c-6d45-4186-8409-0e5eec45ad9c",
+ "next_id": null,
+ "items": []
+}
