@@ -1,10 +1,13 @@
+import argparse
 import logging
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.config import settings
+from app.db import SessionLocal
 from app.models import Employer, JobAd, SyncState
 from app.nav.client import FIRST_PAGE, NavClient
 from app.nav.mapping import map_ad
@@ -105,3 +108,26 @@ def get_or_create_employer(db: Session, data: dict) -> Employer:
     else:
         employer.name = data["name"]
     return employer
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Sync job ads from NAV's feed.")
+    parser.add_argument(
+        "--since-days", type=int, default=7,
+        help="how far back the first sync starts (ignored once we have a saved position)",
+    )
+    parser.add_argument("--max-pages", type=int, help="stop after this many pages (for development)")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    client = NavClient(settings.nav_feed_base_url, settings.nav_feed_token, settings.http_user_agent)
+    since = datetime.now(timezone.utc) - timedelta(days=args.since_days)
+    with SessionLocal() as db:
+        sync(db, client, since, args.max_pages)
+
+
+if __name__ == "__main__":
+    main()

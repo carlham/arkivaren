@@ -7,7 +7,7 @@ from sqlalchemy import func, select
 
 from app.models import Employer, JobAd, SyncState, active_job_ads
 from app.nav.client import NavClient
-from app.nav.sync import STATE_NAME, sync
+from app.nav.sync import STATE_NAME, parse_args, sync
 
 FIXTURES = Path(__file__).parent / "fixtures" / "nav"
 SINCE = datetime(2026, 11, 3, tzinfo=timezone.utc)
@@ -148,3 +148,15 @@ def test_employer_is_stored_once_per_orgnr(db):
     employer = db.scalar(select(Employer).where(Employer.orgnr == "973635611"))
     assert employer.name == "ABB AS"
     assert db.scalar(select(JobAd.employer_id).where(JobAd.uuid == NEW_AD)) == employer.id
+
+
+def test_command_line_defaults_to_seven_days_and_all_pages():
+    args = parse_args([])
+
+    assert (args.since_days, args.max_pages) == (7, None)
+
+
+def test_command_line_reads_since_days_and_max_pages():
+    args = parse_args(["--since-days", "2", "--max-pages", "1"])
+
+    assert (args.since_days, args.max_pages) == (2, 1)
